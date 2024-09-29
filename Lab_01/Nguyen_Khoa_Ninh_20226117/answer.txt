@@ -1,0 +1,84 @@
+//225
+10
+20
+30
+-10
+200
+0.5
+
+//226
+Menu:
+1. Solve first-degree equation (ax + b = 0)
+2. Solve system of two first-degree equations
+3. Solve second-degree equation (ax^2 + bx + c = 0)
+4. Exit
+Please enter your choice: 1
+a = 0
+a cannot be 0! Please re-enter.
+a = 1
+b = 1
+x = -1.0
+Menu:
+1. Solve first-degree equation (ax + b = 0)
+2. Solve system of two first-degree equations
+3. Solve second-degree equation (ax^2 + bx + c = 0)
+4. Exit
+Please enter your choice: 4
+Exiting...
+
+//62
+What's your name?
+Ninh
+How old are you?
+18
+How tall are you (m)?
+10
+Mrs/Ms. Ninh, 18 years old. Your height is 10.0.
+
+//63
+5
+    *
+   ***
+  *****
+ *******
+*********
+
+//64
+Enter year (e.g., 1999): 2000
+Enter month (e.g., January, Jan, Jan., or 1): 9
+The month 9 of the year 2000 has 30 days.
+
+//65
+Nhap vao so luong phan tu n = 5
+Nhap vao mang cac so nguyen:
+Phan tu thu 1 la: 3
+Phan tu thu 2 la: 6
+Phan tu thu 3 la: 9
+Phan tu thu 4 la: 5
+Phan tu thu 5 la: 6
+Mang vua nhap la:
+3	6	9	5	6	
+Mang sau khi sap xep tang dan la:
+3	5	6	6	9	
+
+Tong cua mang la: 29
+Gia tri trung binh cua mang la: 5.8
+
+//66
+Number of rows of matrix:
+2
+Number of columns of matrix:
+2
+Input elements of the first matrix:
+1
+1
+1
+1
+Input the elements of the second matrix:
+1
+1
+1
+1
+Sum of the matrices: 
+2	2	
+2	2	
