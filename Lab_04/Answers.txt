@@ -1,3 +1,32 @@
-Trả lời câu hỏi 1: Java là ngôn ngữ lập trình "Pass by Value". Trong Java, khi truyền một tham số cho một phương thức, giá trị của tham số được sao chép và truyền vào phương thức. Điều này có nghĩa là nếu thay đổi giá trị của tham số bên trong phương thức, giá trị của biến gọi phương thức không bị ảnh hưởng.
-Trả lời câu hỏi 2: Sau khi thực hiện phương thức swap(jungleDVD, cinderellaDVD), tiêu đề của hai đối tượng vẫn giữ nguyên vì trong Java, tham số được truyền vào phương thức là giá trị của đối tượng, không phải là tham chiếu đến đối tượng. Khi ta thay đổi giá trị của tham số bên trong phương thức (như việc đổi chỗ giữa o1 và o2), sự thay đổi này không ảnh hưởng đến giá trị của các đối tượng gốc.
-Trả lời câu hỏi 3: Sau khi gọi changeTitle(jungleDVD, cinderellaDVD.getTitle()), tiêu đề của jungleDVD bị thay đổi vì trong phương thức changeTitle, ta thực hiện thay đổi trực tiếp trên đối tượng dvd (được truyền vào phương thức) bằng cách gọi dvd.setTitle(title). Điều này ảnh hưởng trực tiếp đến đối tượng gốc được truyền vào phương thức.
+1. Lớp nào nên triển khai giao diện Comparable?
+Lớp nên triển khai giao diện Comparable là lớp chứa đối tượng mà bạn muốn so sánh. Trong trường hợp này, đó là lớp trừu tượng Media.
+
+2. Phương thức compareTo() nên được triển khai như thế nào?
+Để triển khai phương thức compareTo(), bạn cần so sánh các thuộc tính của đối tượng. Nếu bạn muốn sắp xếp theo title trước, sau đó là cost, bạn có thể thực hiện như sau:
+
+@Override
+public int compareTo(Media other) {
+    if (!this.getTitle().equals(other.getTitle())) {
+        return this.getTitle().compareTo(other.getTitle());
+    } else {
+        return Double.compare(this.getCost(), other.getCost());
+    }
+}
+3. Có thể có hai quy tắc sắp xếp khác nhau không?
+Không, với giao diện Comparable, bạn chỉ có thể có một quy tắc sắp xếp cho mỗi lớp. Điều này là do phương thức compareTo() chỉ có thể trả về một giá trị int, do đó không thể định nghĩa nhiều quy tắc trong cùng một lớp.
+
+4. Làm thế nào để điều chỉnh mã cho DVD?
+Nếu các đĩa DVD có quy tắc sắp xếp khác biệt (theo title, sau đó là độ dài giảm dần, và cuối cùng là giá), bạn có thể tạo một lớp riêng cho DVD và triển khai phương thức compareTo() như sau:
+
+
+public class DVD extends Media implements Comparable<DVD> {
+    @Override 
+    public int compareTo(DVD other) {
+        if (!this.getTitle().equals(other.getTitle())) {
+            return this.getTitle().compareTo(other.getTitle());
+        } else {
+            // So sánh độ dài giảm dần
+            return Integer.compare(other.getLength(), this.getLength());
+        }
+    }
+}
