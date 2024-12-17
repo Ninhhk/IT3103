@@ -1,0 +1,32 @@
+1. Lớp nào nên triển khai giao diện Comparable?
+Lớp nên triển khai giao diện Comparable là lớp chứa đối tượng mà bạn muốn so sánh. Trong trường hợp này, đó là lớp trừu tượng Media.
+
+2. Phương thức compareTo() nên được triển khai như thế nào?
+Để triển khai phương thức compareTo(), bạn cần so sánh các thuộc tính của đối tượng. Nếu bạn muốn sắp xếp theo title trước, sau đó là cost, bạn có thể thực hiện như sau:
+
+@Override
+public int compareTo(Media other) {
+    if (!this.getTitle().equals(other.getTitle())) {
+        return this.getTitle().compareTo(other.getTitle());
+    } else {
+        return Double.compare(this.getCost(), other.getCost());
+    }
+}
+3. Có thể có hai quy tắc sắp xếp khác nhau không?
+Không, với giao diện Comparable, bạn chỉ có thể có một quy tắc sắp xếp cho mỗi lớp. Điều này là do phương thức compareTo() chỉ có thể trả về một giá trị int, do đó không thể định nghĩa nhiều quy tắc trong cùng một lớp.
+
+4. Làm thế nào để điều chỉnh mã cho DVD?
+Nếu các đĩa DVD có quy tắc sắp xếp khác biệt (theo title, sau đó là độ dài giảm dần, và cuối cùng là giá), bạn có thể tạo một lớp riêng cho DVD và triển khai phương thức compareTo() như sau:
+
+
+public class DVD extends Media implements Comparable<DVD> {
+    @Override 
+    public int compareTo(DVD other) {
+        if (!this.getTitle().equals(other.getTitle())) {
+            return this.getTitle().compareTo(other.getTitle());
+        } else {
+            // So sánh độ dài giảm dần
+            return Integer.compare(other.getLength(), this.getLength());
+        }
+    }
+}
